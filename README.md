@@ -69,6 +69,10 @@ $(document).ready(function() {
 </script>
 ```
 
+## IMPORTANT: File type validation
+
+Whilst this plugin can check file extensions, it does nothing else to validate the uploaded file. You must ensure that your server side script is handling file type and extension checking as well. _Never use this plugin in production without the necassary validation server side!!_
+
 ## Handling files server-side
 
 jQuery Image Upload is a UI tool, it simply makes uploading images instant and more visually pleasing. By default, the plugin will try to upload files to a PHP script `upload.php`. You can override this with the path to your script in when initialising the plugin.

@@ -6,6 +6,7 @@
          * Default Settings
          */
         var defaults = {
+            url       : null,
             container : this.parent(),
             allowed   : ['jpg', 'jpeg', 'gif', 'png'],
             form      : '#form',
@@ -38,6 +39,9 @@
 
             // Show loading spinner
             $(settings.container).append('<span class="iu-spinner"><img src="working.gif" width="20" height="20"></span>');
+
+            // Set input
+            var input           = $(this);
 
             // Get File Info
             var file_name       = $(this).val(),
@@ -73,8 +77,14 @@
                          */
                         if ( response.code === 200 ) {
 
+                            // Store the file URL
+                            settings.url = response.url;
+
                             // Append response to the screen
                             $(settings.container).append('<span class="iu-alert iu-success">Upload complete.</span>');
+
+                            // Reset input
+                            input.replaceWith(input.val('').clone(true));
 
                             // Fire onSuccess function
                             if (typeof settings.onSuccess === 'function') {

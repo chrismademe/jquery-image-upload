@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form id="form">
+<form id="form" style="padding: 30px">
     <div class="image-upload">
         <input data-rel="image" type="file" name="my_image">
     </div>
@@ -18,15 +18,11 @@
 <script>
 $(document).ready(function() {
     $('[data-rel="image"]').imageUpload({
-        container: '.container',
-        allowed: ['jpg', 'jpeg', 'gif', 'png'],
-        form: '#form',
-        handler: 'upload.php',
         onInit: function() {
             console.log('Plugin initialised');
         },
-        onSuccess: function() {
-            console.log('Yeeeaahh!!!');
+        onSuccess : function() {
+            console.log($(this)[0].url);
         },
         onFail: function() {
             console.log('Ohh snap...');
