@@ -1,0 +1,19 @@
+.iu-spinner {
+    display: block;
+    margin-top: 0.4em;
+}
+
+.iu-alert {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 0.4em;
+
+    &.iu-success {
+        color: #36b813;
+    }
+
+    &.iu-error {
+        color: #e85c1f;
+    }
+
+}

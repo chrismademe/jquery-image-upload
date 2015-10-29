@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>jQuery Image Upload</title>
+    <link rel="stylesheet" href="../jquery.image-upload.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+
+<form id="form">
+    <div class="image-upload">
+        <input data-rel="image" type="file" name="my_image">
+    </div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../jquery.image-upload.js"></script>
+<script>
+$(document).ready(function() {
+    $('[data-rel="image"]').imageUpload({
+        'handler': 'upload.php'
+    });
+});
+</script>
+</body>
+</html>
