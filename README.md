@@ -32,10 +32,18 @@ __All Options and Callbacks__
 <script>
 $(document).ready(function() {
     $('[data-rel="image"]').imageUpload({
-        container: '.container', // Defaults to the parent of the file input
-        allowed: ['jpg', 'jpeg', 'gif', 'png'], // Array of allow extensions
-        form: '#form', // Form ID or element for the form data
-        handler: 'upload.php', // Script to send AJAX request to
+
+        // Defaults to the parent of the file input
+        container: '.container',
+
+        // Array of allow extensions
+        allowed: ['jpg', 'jpeg', 'gif', 'png'],
+
+        // Form ID or element for the form data
+        form: '#form',
+
+        // Script to send AJAX request to
+        handler: 'upload.php',
 
         // onInit Callback - fired on plugin initilisation
         onInit: function() {
