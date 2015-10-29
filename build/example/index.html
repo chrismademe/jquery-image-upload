@@ -18,7 +18,22 @@
 <script>
 $(document).ready(function() {
     $('[data-rel="image"]').imageUpload({
-        'handler': 'upload.php'
+        container: '.container',
+        allowed: ['jpg', 'jpeg', 'gif', 'png'],
+        form: '#form',
+        handler: 'upload.php',
+        onInit: function() {
+            console.log('Plugin initialised');
+        },
+        onSuccess: function() {
+            console.log('Yeeeaahh!!!');
+        },
+        onFail: function() {
+            console.log('Ohh snap...');
+        },
+        onError: function() {
+            console.log('It broke.');
+        }
     });
 });
 </script>

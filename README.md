@@ -7,22 +7,56 @@ Simple jQuery plugin to provide instant image uploads via AJAX.
 
 The plugin was developed on version 1.9.1 of jQuery but I'm sure it'll work just fine on others.
 
-Include jQuery and the plugin:
+__Include jQuery and the plugin:__
 ```
 <script src="/path/to/jquery.js"></script>
 <script src="/path/to/plugin/jquery.image-upload.js"></script>
 ```
 
-If you need them, include the base styles in the `<head>` of your page.
+_If you need them, include the base styles in the `<head>` of your page._
 ```
 <link rel="stylesheet" href="/path/to/plugin/jquery.image-upload.css">
 ```
 
-Initialise the plugin:
+__Initialise the plugin:__
 ```
 <script>
 $(document).ready(function() {
     $('#file_input').imageUpload();
+});
+</script>
+```
+
+__All Options and Callbacks__
+```
+<script>
+$(document).ready(function() {
+    $('[data-rel="image"]').imageUpload({
+        container: '.container', // Defaults to the parent of the file input
+        allowed: ['jpg', 'jpeg', 'gif', 'png'], // Array of allow extensions
+        form: '#form', // Form ID or element for the form data
+        handler: 'upload.php', // Script to send AJAX request to
+
+        // onInit Callback - fired on plugin initilisation
+        onInit: function() {
+            console.log('Plugin initialised');
+        },
+
+        // onSuccess Callback - fired on successful response from AJAX request
+        onSuccess: function() {
+            console.log('Yeeeaahh!!!');
+        },
+
+        // onFail Callback - fired on unsuccessful response from AJAX request
+        onFail: function() {
+            console.log('Ohh snap...');
+        },
+
+        // onError Callback - fired when there was an error sending the AJAX request
+        onError: function() {
+            console.log('It broke.');
+        }
+    });
 });
 </script>
 ```

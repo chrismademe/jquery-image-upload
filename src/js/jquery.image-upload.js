@@ -6,16 +6,27 @@
          * Default Settings
          */
         var defaults = {
-            'container' : this.parent(),
-            'allowed'   : ['jpg', 'jpeg', 'gif', 'png'],
-            'form'      : '#form',
-            'handler'   : 'upload.php'
+            container : this.parent(),
+            allowed   : ['jpg', 'jpeg', 'gif', 'png'],
+            form      : '#form',
+            handler   : 'upload.php',
+            onInit    : function() {}, // Fired on plugin initialisation
+            onSuccess : function() {}, // Fired after successful upload
+            onFail    : function() {}, // Fired after failed upload
+            onError   : function() {}  // Fired on AJAX error
         }
 
         /**
          * Settings Object
          */
         var settings = $.extend( {}, defaults, options );
+
+        /**
+         * Fire onSuccess function
+         */
+        if (typeof settings.onInit === 'function') {
+            settings.onInit();
+        }
 
         /**
          * Image Upload
@@ -56,22 +67,51 @@
 
                     //Ajax events
                     success: function(response) {
-                        console.log(response);
 
+                        /**
+                         * Get server response
+                         */
                         if ( response.code === 200 ) {
+
+                            // Append response to the screen
                             $(settings.container).append('<span class="iu-alert iu-success">Upload complete.</span>');
+
+                            // Fire onSuccess function
+                            if (typeof settings.onSuccess === 'function') {
+                                settings.onSuccess();
+                            }
+
                         } else {
-                            console.log(response);
+
+                            // Append error message to the screen
                             $(settings.container).append('<span class="iu-alert iu-error">Something went wrong, your image was not uploaded.</span>');
+
+                            // Fire onFail function
+                            if (typeof settings.onFail === 'function') {
+                                settings.onFail();
+                            }
+
                         }
 
+                        /**
+                         * Remove the spinner
+                         */
                         $('.iu-spinner').remove();
 
                     },
                     error: function(response) {
-                        console.log(response);
+
+                        // Append error message to the screen
                         $(settings.container).append('<span class="iu-alert iu-error">Something went wrong, your image was not uploaded.</span>');
+
+                        // Remove spinner
                         $('.iu-spinner').remove();
+
+                        // Fire onError function
+                        if (typeof settings.onError === 'function') {
+                            settings.onError();
+                        }
+
                     },
 
                     // Form data
@@ -90,8 +130,6 @@
             }
 
         });
-
-        console.log(settings);
 
     }
 
