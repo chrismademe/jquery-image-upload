@@ -8,18 +8,18 @@ Simple jQuery plugin to provide instant image uploads via AJAX.
 The plugin was developed on version 1.9.1 of jQuery but I'm sure it'll work just fine on others.
 
 __Include jQuery and the plugin:__
-```
+```javascript
 <script src="/path/to/jquery.js"></script>
 <script src="/path/to/plugin/jquery.image-upload.js"></script>
 ```
 
 _If you need them, include the base styles in the `<head>` of your page._
-```
+```javascript
 <link rel="stylesheet" href="/path/to/plugin/jquery.image-upload.css">
 ```
 
 __Initialise the plugin:__
-```
+```javascript
 <script>
 $(document).ready(function() {
     $('#file_input').imageUpload();
@@ -28,7 +28,7 @@ $(document).ready(function() {
 ```
 
 __All Options and Callbacks__
-```
+```javascript
 <script>
 $(document).ready(function() {
     $('[data-rel="image"]').imageUpload({
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
 jQuery Image Upload is a UI tool, it simply makes uploading images instant and more visually pleasing. By default, the plugin will try to upload files to a PHP script `upload.php`. You can override this with the path to your script in when initialising the plugin.
 
-```
+```javascript
 <script>
 $(document).ready(function() {
     $('#file_input').imageUpload({
